@@ -11,7 +11,7 @@
     </Header>
     <!--首页导航-->
     <nav class="msite_nav">
-      <div class="swiper-container">
+      <div ref="sc1" class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(cs, index) in categorysArr2" :key="index">
             <div class="link_to_food" v-for="(c, index) in cs" :key="index">
@@ -34,16 +34,16 @@
       </div>
       <div class="shop_container">
         <ul class="shop_list" v-if="shops.length>0">
-          <li class="shop_li border-1px" v-for="(shop,index) in shops" :key="shop.id">
+          <li class="shop_li border-1px" v-for="(shop,index) in shops" :key="shop.id" @click="$router.push('/shop')">
             <a>
               <div class="shop_left">
                 <img class="shop_img" :src="'https://fuss10.elemecdn.com' + shop.image_path">
               </div>
               <div class="shop_right">
                 <section class="shop_detail_header">
-                  <h4 class="shop_title ellipsis">{{shops.name}}</h4>
+                  <h4 class="shop_title ellipsis">{{shop.name}}</h4>
                   <ul class="shop_detail_ul">
-                    <li class="supports" v-for="(support,index) in supports" :key='index'>保</li>
+                    <li class="supports" v-for="(support,index) in shop.supports" :key='index'>{{support.icon_name}}</li>
                   </ul>
                 </section>
                 <section class="shop_rating_order">
